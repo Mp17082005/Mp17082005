@@ -76,7 +76,7 @@ Previously a Software Developer Intern at **Bhoomy Informatics**, building FastA
 | **[ProjectFlow](https://github.com/Mp17082005/smart-project-management)** | Jira-style project management — Kanban and list views, role-based admin panel, live activity log, JWT auth, real-time updates over sockets. | React · TypeScript · Express · MongoDB · Socket.IO |
 | **[Smart Camera Analytics](https://github.com/Mp17082005/camera_analytics)** | Motion-gated YOLOv8 person detection on a live webcam feed — background subtraction filters static frames so only real intruders trigger a Telegram alert with a photo. | Python · OpenCV · YOLOv8 · Telegram API |
 
-More in the repo list — hackathon builds, a recurring date-picker component with 39 passing Jest tests, a participatory village-planning map, and ML notebooks.
+More in the repo list — hackathon builds, a recurring date-picker component with 39 Jest test cases, a participatory village-planning map, and ML notebooks.
 
 ---
 
