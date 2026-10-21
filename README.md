@@ -16,6 +16,8 @@
 
 I build **agentic AI systems that run in production**, not demos.
 
+> **Latest:** [**AI Call Assistant**](https://github.com/Mp17082005/ai-call-assistant) — a phone agent that picks up when you can't, holds a real conversation, and **detects the caller's language mid-call**. A caller opens in Hindi, it answers in Hindi. Switches to Tamil, it follows. 14 languages, 9 of them Indian. 152 tests, Twilio signature auth, one-command setup.
+
 Currently an AI Engineer at **Infinall.ai**, where I work on multi-agent orchestration (LangGraph DAGs with Postgres checkpointing, Celery + Redis, SSE streaming), a provider-agnostic LLM gateway with multi-deep fallback chains across OpenAI / Azure / Claude, and per-call credit metering that closed a live cost leak after an audit found **64% of output tokens were unmetered**. Deployed on **AWS EKS** via GitHub Actions and Docker.
 
 Previously a Software Developer Intern at **Bhoomy Informatics**, building FastAPI services with dynamic MongoDB schemas and benchmarking PostgreSQL / MongoDB / Redis / Cassandra / Neo4j for a search personalisation architecture.
@@ -48,6 +50,7 @@ Previously a Software Developer Intern at **Bhoomy Informatics**, building FastA
 ![Node.js](https://img.shields.io/badge/Node.js-5FA04E?style=flat-square&logo=nodedotjs&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white)
 ![Celery](https://img.shields.io/badge/Celery-37814A?style=flat-square&logo=celery&logoColor=white)
+![Twilio](https://img.shields.io/badge/Twilio-F22F46?style=flat-square&logo=twilio&logoColor=white)
 
 **Data** &nbsp;
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
@@ -69,6 +72,7 @@ Previously a Software Developer Intern at **Bhoomy Informatics**, building FastA
 
 | Project | What it does | Stack |
 |---|---|---|
+| **[AI Call Assistant](https://github.com/Mp17082005/ai-call-assistant)** | Answers your missed calls and actually talks to the caller — multi-turn, with memory. Detects their language from the first sentence and replies in it, including romanized Hinglish, then texts you an English summary with urgency and caller name. Refuses to invent your availability. | FastAPI · Twilio · LLM orchestration · Telegram |
 | **[Exam Prep Companion](https://github.com/Mp17082005/minor_project)** | RAG study assistant — ingests PDF/DOCX/PPTX, chunks to Qdrant with BGE embeddings, answers from your notes, the live web, or the raw model. Includes an AI assignment grader with teacher and student dashboards. | FastAPI · Qdrant · LangChain · Gemini · React |
 | **[Slack AI Data Bot](https://github.com/Mp17082005/slack_automation)** | Ask your database a question in plain English from Slack. Gemini writes the SQL, a guard layer rejects anything that isn't a scoped `SELECT`, results come back as a chart plus a CSV download button. | FastAPI · LangChain · PostgreSQL · Slack Block Kit |
 | **[Hyp7.0 — Delivery & Transit Mesh](https://github.com/Mp17082005/hyp7.0)** | Three synchronised apps (rider, delivery driver, ride driver) over one matching engine that detects route overlap and merges a grocery drop with a passenger trip when the shared path is cheap enough. | React · TypeScript · Leaflet · Custom matching engine |
@@ -77,6 +81,25 @@ Previously a Software Developer Intern at **Bhoomy Informatics**, building FastA
 | **[Smart Camera Analytics](https://github.com/Mp17082005/camera_analytics)** | Motion-gated YOLOv8 person detection on a live webcam feed — background subtraction filters static frames so only real intruders trigger a Telegram alert with a photo. | Python · OpenCV · YOLOv8 · Telegram API |
 
 More in the repo list — hackathon builds, a recurring date-picker component with 39 Jest test cases, a participatory village-planning map, and ML notebooks.
+
+---
+
+### What a language-switching call sounds like
+
+From [AI Call Assistant](https://github.com/Mp17082005/ai-call-assistant) — the caller starts in English, switches to Hindi, and the agent follows without being told:
+
+```
+Assistant  Hello! This is Maya, Mahesh's assistant. May I ask who's calling?
+Caller     Hello, this is David calling
+Assistant  Hi David, I'm Maya, Mahesh's assistant — he's unavailable right
+           now. What can I help you with today?                    [en-IN]
+Caller     Actually मैं हिंदी में बात कर सकता हूँ क्या?
+Assistant  बिल्कुल, हिंदी में बात कर सकते हैं। बताइए David जी, आप किस
+           बारे में बात करना चाहते थे?                              [hi-IN]
+```
+
+Speech recognition locale and TTS voice swap mid-call. Detection runs on Unicode
+script first, then keyword matching for romanized input like *"mujhe baat karni hai"*.
 
 ---
 
